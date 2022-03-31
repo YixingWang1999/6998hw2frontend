@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Photo API</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div>
+        <input type="search" value="" id="search">   
+        <button onclick="photosearch()">SEARCHPHOTOS</button>             
+        <div>
+            <h4 id="status">Start speaking</h4>
+            <button onclick="startRecognition()">Speech</button>
+            <input type="search" value="" id="result" class="hide">
+            <button onclick="photosearch()">SEARCH</button>
+        </div><br>
+        <div id="display_image"></div>
+          <script src="test.js"></script>
+        <script>
+            function photosearch(){    
+                var x = document.getElementById("result").value;  
+                if (x==''){https://nu0bv58t6b.execute-api.us-east-1.amazonaws.com/prod/search?type=show me trees and yw
+                    var x = document.getElementById("search").value;  
+                }       
+                const url = 'https://nu0bv58t6b.execute-api.us-east-1.amazonaws.com/prod/search?type='+x ;
+                fetch(url, {
+                    mode: 'cors',
+                    method: "GET",
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    console.log(response);
+                    throw new Error("NETWORK RESPONSE ERROR");
+                    }
+                })
+                .then(data => {
+                    console.log(data);
+                    display(data)
+                })
+                .catch((error) => console.error("FETCH ERROR:", error));
+
+                function display(data) {
+                    
+                    var src = document.getElementById("display_image"); 
+                    var img = document.createElement("img"); 
+                    
+                    for (i=0;i<data.length;i++){
+                        img.src = data[i];
+                        src.innerHTML += '<img src="'+img.src+'" />';
+                    }                    
+                }
+            }   
+            </script>           
+        </div>    
+        <div>
+            <button onclick="window.location.href='put.html'">
+                UPLOAD
+              </button>
+        </div>
+  </body>
+</html>
+
+ 
