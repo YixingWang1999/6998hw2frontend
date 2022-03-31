@@ -1,0 +1,12 @@
+{
+  "name": "codepipelines-serverless-frontend",
+  "version": "1.0.0",
+  "main": "dashboard.ts",
+  "repository": "https://github.com/YixingWang1999/6998hw2frontend/",
+  "author": "YixingWang1999 <yw3747@columbia.edu>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "aws-sdk": "^2.1017.0"
+  }
+}
